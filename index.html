@@ -1,11 +1,11 @@
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exclusive Folders - Conteúdo Premium</title>
-    <meta name="description" content="Acesse os melhores conteúdos exclusivos. Folders premium com qualidade garantida.">
+    <title>Exclusive Folders - Premium Content</title>
+    <meta name="description" content="Access the best premium exclusive content. Premium folders with guaranteed quality.">
+    <link rel="icon" href="logo.png" type="image/png">
     
     <!-- Preload critical resources -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style">
@@ -16,235 +16,265 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <style>
-        :root {
-            --primary-red: #dc2626;
-            --secondary-red: #b91c1c;
-            --dark-red: #991b1b;
-            --light-red: #f87171;
-            --accent-red: #ef4444;
-            --dark-bg: #0f0f0f;
-            --darker-bg: #080808;
-            --card-bg: #1a1a1a;
-            --text-light: #f5f5f5;
-            --text-gray: #a3a3a3;
-            --border-color: #333;
-            --success-green: #10b981;
-            --warning-orange: #f59e0b;
-        }
+    <!-- CSS will be placed here -->
+      <style>
+:root {
+    --primary-red: #dc2626;
+    --secondary-red: #b91c1c;
+    --dark-red: #991b1b;
+    --light-red: #f87171;
+    --accent-red: #ef4444;
+    --dark-bg: #0f0f0f;
+    --darker-bg: #080808;
+    --card-bg: #1a1a1a;
+    --text-light: #f5f5f5;
+    --text-gray: #a3a3a3;
+    --border-color: #333;
+    --success-green: #10b981;
+    --warning-orange: #f59e0b;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden; /* Isso já está correto */
+    margin: 0; /* Adicionando para garantir */
+    padding: 0; /* Adicionando para garantir */
+    width: 100%; /* Garante que o body ocupe toda a largura */
+    position: relative; /* Importante para elementos posicionados */
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+/* Adicione isso para corrigir possíveis problemas com a barra de rolagem */
+html {
+    width: 100%;
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
-            color: var(--text-light);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+/* Se o problema persistir, pode ser algum elemento vazando */
+.container, .main-container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+}
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
 
-        ::-webkit-scrollbar-track {
-            background: var(--darker-bg);
-        }
 
-        ::-webkit-scrollbar-thumb {
-            background: var(--primary-red);
-            border-radius: 4px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--secondary-red);
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        /* Header Counter */
-        .counter-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: linear-gradient(90deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            padding: 12px 0;
-            text-align: center;
-            font-weight: 600;
-            font-size: 16px;
-            z-index: 10000;
-            box-shadow: 0 2px 20px rgba(220, 38, 38, 0.3);
-            backdrop-filter: blur(10px);
-        }
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, var(--dark-bg) 0%, var(--darker-bg) 100%);
+    color: var(--text-light);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
 
-        .counter-bar .pulse {
-            display: inline-block;
-            animation: pulse 2s infinite;
-        }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
+::-webkit-scrollbar-track {
+    background: var(--darker-bg);
+}
 
-        /* Notification System */
-        .notification {
-            position: fixed;
-            top: 80px;
-            right: 20px;
-            background: linear-gradient(135deg, var(--card-bg), rgba(220, 38, 38, 0.1));
-            border: 1px solid var(--primary-red);
-            color: var(--text-light);
-            padding: 16px 20px;
-            border-radius: 12px;
-            font-size: 14px;
-            font-weight: 500;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(16px);
-            transform: translateX(400px);
-            opacity: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 9999;
-            max-width: 350px;
-        }
+::-webkit-scrollbar-thumb {
+    background: var(--primary-red);
+    border-radius: 4px;
+}
 
-        .notification.show {
-            transform: translateX(0);
-            opacity: 1;
-        }
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-red);
+}
 
-        .notification .check-icon {
-            color: var(--success-green);
-            margin-right: 8px;
-        }
+/* Header Counter */
+.counter-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(90deg, var(--primary-red), var(--secondary-red));
+    color: white;
+    padding: 12px 0;
+    text-align: center;
+    font-weight: 600;
+    font-size: 16px;
+    z-index: 10000;
+    box-shadow: 0 2px 20px rgba(220, 38, 38, 0.3);
+    backdrop-filter: blur(10px);
+}
 
-        /* Main Container */
-        .main-container {
-            padding-top: 60px;
-            min-height: 100vh;
-        }
+.counter-bar .pulse {
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
 
-        /* Hero Section */
-        .hero-section {
-            padding: 60px 20px;
-            text-align: center;
-            background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
-        }
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 
-        .hero-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            animation: glow 3s ease-in-out infinite alternate;
-        }
+/* Notification System */
+.notification {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    background: linear-gradient(135deg, var(--card-bg), rgba(220, 38, 38, 0.1));
+    border: 1px solid var(--primary-red);
+    color: var(--text-light);
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(16px);
+    transform: translateX(400px);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 9999;
+    max-width: 350px;
+}
 
-        @keyframes glow {
-            from { filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.5)); }
-            to { filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.8)); }
-        }
+.notification.show {
+    transform: translateX(0);
+    opacity: 1;
+}
 
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-gray);
-            margin-bottom: 40px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
+.notification .check-icon {
+    color: var(--success-green);
+    margin-right: 8px;
+}
 
-        /* Menu Toggle */
-        .menu-toggle {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            font-size: 18px;
-            font-weight: 600;
-            border-radius: 50px;
-            cursor: pointer;
-            margin: 0 auto 40px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-        }
+/* Main Container */
+.main-container {
+    padding-top: 60px;
+    min-height: 100vh;
+}
 
-        .menu-toggle::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: left 0.5s;
-        }
+/* Hero Section */
+.hero-section {
+    padding: 60px 20px;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(220, 38, 38, 0.1) 0%, transparent 70%);
+}
 
-        .menu-toggle:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
-        }
+.hero-title {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 20px;
+    animation: glow 3s ease-in-out infinite alternate;
+}
 
-        .menu-toggle:hover::before {
-            left: 100%;
-        }
+@keyframes glow {
+    from { filter: drop-shadow(0 0 20px rgba(220, 38, 38, 0.5)); }
+    to { filter: drop-shadow(0 0 30px rgba(220, 38, 38, 0.8)); }
+}
 
-        .menu-toggle:active {
-            transform: translateY(0);
-        }
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
 
-        /* Content Grid */
-        .content-grid {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 24px;
-            opacity: 0;
-            transform: translateY(40px);
-            transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .content-grid.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        /* Content Cards */
-        .content-card {
-            background: linear-gradient(135deg, var(--card-bg), rgba(220, 38, 38, 0.05));
-            border: 1px solid var(--border-color);
-            border-radius: 20px;
-            padding: 0;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            overflow: hidden;
-            cursor: pointer;
-            transform: translateY(20px);
-            opacity: 0;
-            animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-
-        .card-preview {
+/* Menu Toggle */
+.menu-toggle {
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    margin: 0 auto 40px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     position: relative;
-    height: 220px; /* Aumentei a altura */
+    overflow: hidden;
+}
+
+.menu-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.menu-toggle:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
+}
+
+.menu-toggle:hover::before {
+    left: 100%;
+}
+
+.menu-toggle:active {
+    transform: translateY(0);
+}
+
+/* Content Grid */
+.content-grid {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 24px;
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Content Cards */
+.content-card {
+    background: linear-gradient(135deg, var(--card-bg), rgba(220, 38, 38, 0.05));
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 0;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transform: translateY(20px);
+    opacity: 0;
+    animation: cardReveal 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.card-preview {
+    position: relative;
+    height: 220px;
     overflow: hidden;
     border-radius: 20px 20px 0 0;
 }
@@ -252,392 +282,324 @@
 .preview-image {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Mudei de 'cover' para 'contain' para mostrar a imagem inteira */
-    object-position: center; /* Centraliza a imagem */
-    background-color: #1a1a1a; /* Fundo escuro para imagens com transparência */
+    object-fit: contain;
+    object-position: center;
+    background-color: #1a1a1a;
     transition: transform 0.3s ease;
 }
 
-        .content-card:hover .preview-image {
-            transform: scale(1.1);
-        }
+.content-card:hover .preview-image {
+    transform: scale(1.1);
+}
 
-        .preview-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, rgba(220, 38, 38, 0.9), rgba(185, 28, 28, 0.9));
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-weight: 700;
-            font-size: 18px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
+.preview-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, rgba(220, 38, 38, 0.9), rgba(185, 28, 28, 0.9));
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
 
-        .preview-overlay i {
-            font-size: 24px;
-            margin-bottom: 8px;
-        }
+.preview-overlay i {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
 
-        .content-card:hover .preview-overlay {
-            opacity: 1;
-        }
+.content-card:hover .preview-overlay {
+    opacity: 1;
+}
 
-        .card-content {
-            padding: 24px;
-        }
+.card-content {
+    padding: 24px;
+}
 
-        .card-description {
-            color: var(--text-gray);
-            font-size: 0.9rem;
-            line-height: 1.5;
-            margin-bottom: 16px;
-        }
+.card-description {
+    color: var(--text-gray);
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: 16px;
+}
 
-        .card-features {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 20px;
-        }
+.card-features {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 20px;
+}
 
-        .feature-tag {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            font-size: 0.75rem;
-            font-weight: 600;
-            padding: 4px 8px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-        }
+.feature-tag {
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
 
-        .feature-tag i {
-            font-size: 0.7rem;
-        }
+.feature-tag i {
+    font-size: 0.7rem;
+}
 
-        .content-card:nth-child(odd) {
-            animation-delay: 0.1s;
-        }
+.content-card:nth-child(odd) {
+    animation-delay: 0.1s;
+}
 
-        .content-card:nth-child(even) {
-            animation-delay: 0.2s;
-        }
+.content-card:nth-child(even) {
+    animation-delay: 0.2s;
+}
 
-        @keyframes cardReveal {
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+@keyframes cardReveal {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        .content-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            z-index: -1;
-        }
+.content-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
 
-        .content-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--primary-red);
-            box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
-        }
+.content-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--primary-red);
+    box-shadow: 0 20px 40px rgba(220, 38, 38, 0.2);
+}
 
-        .content-card:hover::before {
-            opacity: 0.1;
-        }
+.content-card:hover::before {
+    opacity: 0.1;
+}
 
-        .card-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 16px;
-        }
+.card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+}
 
-        .card-title {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-light);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
 
-        .card-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 18px;
-        }
+.card-icon {
+    width: 40px;
+    height: 40px;
+    background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 18px;
+}
 
-        .get-now-btn {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 25px;
-            font-weight: 600;
-            font-size: 14px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            position: relative;
-            overflow: hidden;
-        }
+.get-now-btn {
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    overflow: hidden;
+}
 
-        .get-now-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            transition: all 0.3s ease;
-            transform: translate(-50%, -50%);
-        }
+.get-now-btn::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    transform: translate(-50%, -50%);
+}
 
-        .get-now-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
-        }
+.get-now-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
 
-        .get-now-btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
+.get-now-btn:hover::before {
+    width: 300px;
+    height: 300px;
+}
 
-        /* Floating Telegram Button */
-        .telegram-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            width: 70px;
-            height: 70px;
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: white;
-            font-size: 28px;
-            box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            z-index: 1000;
-            animation: float 3s ease-in-out infinite;
-            text-decoration: none;
-        }
+/* Floating Telegram Button */
+.telegram-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 70px;
+    height: 70px;
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 28px;
+    box-shadow: 0 8px 32px rgba(220, 38, 38, 0.4);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    animation: float 3s ease-in-out infinite;
+    text-decoration: none;
+}
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
 
-        .telegram-float:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
-        }
+.telegram-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    box-shadow: 0 12px 40px rgba(220, 38, 38, 0.6);
+}
 
-        /* Popup System */
-        .popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            display: none;
-            align-items: center;
-            justify-content: center;
-            z-index: 10000;
-            animation: fadeIn 0.3s ease;
-        }
+/* Popup System */
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    animation: fadeIn 0.3s ease;
+}
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
 
-        .popup-content {
-            background: linear-gradient(135deg, var(--card-bg), var(--darker-bg));
-            border: 1px solid var(--primary-red);
-            border-radius: 20px;
-            padding: 40px;
-            max-width: 500px;
-            width: 90%;
-            text-align: center;
-            position: relative;
-            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.popup-content {
+    background: linear-gradient(135deg, var(--card-bg), var(--darker-bg));
+    border: 1px solid var(--primary-red);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    position: relative;
+    animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        @keyframes slideUp {
-            from { transform: translateY(50px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
+@keyframes slideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
 
-        .popup-close {
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            background: none;
-            border: none;
-            color: var(--text-gray);
-            font-size: 24px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-        }
+.popup-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: var(--text-gray);
+    font-size: 24px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
 
-        .popup-close:hover {
-            color: var(--primary-red);
-        }
+.popup-close:hover {
+    color: var(--primary-red);
+}
 
-        .popup img {
-            width: 100%;
-            max-width: 300px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-        }
+.popup img {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
 
-        .popup-message {
-            font-size: 1.5rem;
-            font-weight: 700;
-            background: linear-gradient(135deg, var(--primary-red), var(--light-red));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 30px;
-        }
+.popup-message {
+    font-size: 1.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, var(--primary-red), var(--light-red));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 30px;
+}
 
-        .popup-telegram-btn {
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            color: white;
-            border: none;
-            padding: 16px 32px;
-            border-radius: 50px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-flex;
-            align-items: center;
-            gap: 12px;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+.popup-telegram-btn {
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    color: white;
+    border: none;
+    padding: 16px 32px;
+    border-radius: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
 
-        .popup-telegram-btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
-        }
+.popup-telegram-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4);
+}
 
-        /* Loading Animation */
-        .loading {
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            border-top-color: var(--primary-red);
-            animation: spin 1s linear infinite;
-        }
+/* Loading Animation */
+.loading {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--primary-red);
+    animation: spin 1s linear infinite;
+}
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .counter-bar {
-                font-size: 14px;
-                padding: 10px 0;
-            }
-
-            .hero-section {
-                padding: 40px 20px;
-            }
-
-            .content-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-                padding: 0 15px;
-            }
-
-            .content-card {
-                padding: 20px;
-            }
-
-            .card-title {
-                font-size: 1.1rem;
-            }
-
-            .telegram-float {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-                bottom: 20px;
-                right: 20px;
-            }
-
-            .notification {
-                right: 10px;
-                max-width: 300px;
-                font-size: 13px;
-            }
-        }
-
-        /* Copy protection styles */
-        .no-select {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -ms-user-select: none;
-            user-select: none;
-        }
-
-        /* Dark theme enhancements */
-        .glow-effect {
-            box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
-        }
-
-        .gradient-border {
-            position: relative;
-        }
-
-        .gradient-border::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            padding: 1px;
-            background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
-            border-radius: inherit;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: xor;
-        }
-        
-        /* Footer */
+/* Footer */
 .site-footer {
     background: linear-gradient(90deg, var(--darker-bg), var(--dark-bg));
     color: var(--text-gray);
@@ -676,6 +638,160 @@
 .footer-links a:hover {
     color: var(--primary-red);
 }
+
+/* Copy protection styles */
+.no-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Dark theme enhancements */
+.glow-effect {
+    box-shadow: 0 0 20px rgba(220, 38, 38, 0.3);
+}
+
+.gradient-border {
+    position: relative;
+}
+
+.gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    padding: 1px;
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    border-radius: inherit;
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask-composite: xor;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .counter-bar {
+        font-size: 14px;
+        padding: 10px 0;
+    }
+
+    .hero-section {
+        padding: 40px 20px;
+    }
+
+    .content-grid {
+        grid-template-columns: 1fr;
+        gap: 16px;
+        padding: 0 15px;
+    }
+
+    .content-card {
+        padding: 20px;
+    }
+
+    .card-title {
+        font-size: 1.1rem;
+    }
+
+    .telegram-float {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+
+    .notification {
+        right: 10px;
+        max-width: 300px;
+        font-size: 13px;
+    }
+    
+    .popup-content {
+        padding: 30px 20px;
+    }
+    
+    .popup-message {
+        font-size: 1.2rem;
+    }
+    
+    .popup-telegram-btn {
+        padding: 14px 24px;
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .menu-toggle {
+        padding: 14px 24px;
+        font-size: 16px;
+    }
+    
+    .card-preview {
+        height: 180px;
+    }
+    
+    .footer-links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+/* Social Links Section */
+.social-links {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.social-links h3 {
+    color: var(--text-light);
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: var(--text-light);
+    background: linear-gradient(135deg, var(--primary-red), var(--secondary-red));
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 1.2rem;
+}
+
+.social-icons a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 38, 38, 0.4);
+}
+
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .social-icons {
+        gap: 15px;
+    }
+    
+    .social-icons a {
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}
     </style>
 </head>
 <body class="no-select">
@@ -688,12 +804,12 @@
     <div class="main-container">
         <!-- Hero Section -->
         <section class="hero-section">
-            <h1 class="hero-title">Only.+18hotcontentleaker.site</h1>
-Access the best premium content with guaranteed quality. Exclusive folders always updated. 
+            <h1 class="hero-title">Exclusive+PremiumContent.site</h1>
+            <p class="hero-subtitle">Access the best premium content with guaranteed quality. Exclusive folders always updated.</p>
             
             <button class="menu-toggle" onclick="toggleContent()">
                 <i class="fas fa-folder-open"></i>
-I'm 18+ 
+                I'm 18+ 
                 <i class="fas fa-chevron-down" id="menu-arrow"></i>
             </button>
         </section>
@@ -713,11 +829,11 @@ I'm 18+
     <div class="popup" id="popup">
         <div class="popup-content">
             <button class="popup-close" onclick="closePopup()">&times;</button>
-            <img src="img/all.jpg" alt="Promoção Especial">
-            <div class="popup-message">PROMOÇÃO: TODOS OS FOLDERS POR APENAS $190</div>
+            <img src="img/all.jpg" alt="Special Promotion">
+            <div class="popup-message">PROMOTION: ALL FOLDERS FOR JUST $190</div>
             <a href="https://t.me/wickjordan" target="_blank" class="popup-telegram-btn">
                 <i class="fab fa-telegram-plane"></i>
-                Falar com Vendedor
+                Contact Seller
             </a>
         </div>
     </div>
@@ -727,204 +843,220 @@ I'm 18+
         <i class="fas fa-check check-icon"></i>
         <span id="notification-text"></span>
     </div>
-<!-- Footer -->
-<footer class="site-footer">
-    <div class="copyright">
-        <i class="fas fa-copyright"></i>
-        <span>2024 Only.+18hotcontentleaker.site. Todos os direitos reservados.</span>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        
+        <!-- Adicione esta seção dentro do <footer>, antes ou depois dos links existentes -->
+<div class="social-links">
+    <h3>Follow Us</h3>
+    <div class="social-icons">
+        <a href="https://www.instagram.com/bb.wammi?igsh=dGZiejQ0c3U3dHpz" target="_blank" aria-label="Instagram">
+            <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://www.facebook.com/share/17QfcJownE/" target="_blank" aria-label="Facebook">
+            <i class="fab fa-facebook"></i>
+        </a>
     </div>
-    <div class="footer-links">
-        <a href="#" onclick="showTerms()">Termos de Serviço</a>
-        <a href="#" onclick="showPrivacy()">Política de Privacidade</a>
-        <a href="#" onclick="showContact()">Contato</a>
-    </div>
-</footer>
+</div>
+        <div class="copyright">
+            <i class="fas fa-copyright"></i>
+            <span>2024 Exclusive+PremiumContent.site. All rights reserved.</span>
+        </div>
+        <div class="footer-links">
+            <a href="#" onclick="showTerms()">Terms of Service</a>
+            <a href="#" onclick="showPrivacy()">Privacy Policy</a>
+            <a href="#" onclick="showContact()">Contact</a>
+        </div>
+        
+    </footer>
+
     <script>
         // Content data
-const contentData = [
-    { 
-        title: "EMMI-SELLER FOLDER", 
-        icon: "fas fa-star", 
-        url: "https://t.me/wickjordan",
-        preview: "img/1.jpg",
-        description: "✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS LEAK ✅ HOT TEENS ✅ PREMIUM CONTENT"
-    },
-    { 
-        title: "LIZZY FOLDER", 
-        icon: "fas fa-heart", 
-        url: "https://t.me/wickjordan",
-        preview: "img/2.jpg",
-        description: "✅ EXCLUSIVE CONTENT ✅ HIGH QUALITY VIDEOS ✅ PRIVATE PHOTOS ✅ HOT COLLECTION"
-    },
-    { 
-        title: "GRACIE BM FOLDER", 
-        icon: "fas fa-crown", 
-        url: "https://t.me/wickjordan",
-        preview: "img/3.jpg",
-        description: "✅ PREMIUM LEAK ✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS ✅ HOT TEENS"
-    },
-    { 
-        title: "DESIREE GARCIA FOLDER", 
-        icon: "fas fa-gem", 
-        url: "https://t.me/wickjordan",
-        preview: "img/4.jpg",
-        description: "✅ EXCLUSIVE LEAK ✅ HD VIDEOS ✅ PRIVATE COLLECTION ✅ HOT CONTENT"
-    },
-    { 
-        title: "PYYTS FOLDER", 
-        icon: "fas fa-fire", 
-        url: "https://t.me/wickjordan",
-        preview: "img/5.jpg",
-        description: "✅ HOT COLLECTION ✅ FULL VIDEOS ✅ REAL LEAK ✅ PREMIUM CONTENT"
-    },
-    { 
-        title: "CSL FOLDER", 
-        icon: "fas fa-diamond", 
-        url: "https://t.me/wickjordan",
-        preview: "img/6.jpg",
-        description: "✅ EXCLUSIVE PHOTOS ✅ HD VIDEOS ✅ PRIVATE LEAK ✅ HOT TEENS"
-    },
-    { 
-        title: "OMEGLE APP FOLDER", 
-        icon: "fas fa-video", 
-        url: "https://t.me/wickjordan",
-        preview: "img/7.jpg",
-        description: "✅ OMEGLE RECORDINGS ✅ REAL INTERACTIONS ✅ HOT CONTENT ✅ EXCLUSIVE"
-    },
-    { 
-        title: "TIKTOK SNEAKY LEAKS", 
-        icon: "fab fa-tiktok", 
-        url: "https://t.me/wickjordan",
-        preview: "img/8.jpg",
-        description: "✅ TIKTOK EXCLUSIVE ✅ LEAKED CONTENT ✅ HOT VIDEOS ✅ REAL GIRLS"
-    },
-    { 
-        title: "SNAPCHAT FOLDER", 
-        icon: "fab fa-snapchat", 
-        url: "https://t.me/wickjordan",
-        preview: "img/9.jpg",
-        description: "✅ SNAPCHAT LEAKS ✅ PRIVATE STORIES ✅ HOT CONTENT ✅ EXCLUSIVE"
-    },
-    { 
-        title: "REAL-INCEST FOLDER", 
-        icon: "fas fa-users", 
-        url: "https://t.me/wickjordan",
-        preview: "img/10.jpg",
-        description: "✅ REAL CONTENT ✅ EXCLUSIVE VIDEOS ✅ PRIVATE COLLECTION ✅ HOT"
-    },
-    { 
-        title: "BILLIE EILISH FOLDER", 
-        icon: "fas fa-music", 
-        url: "https://t.me/wickjordan",
-        preview: "img/11.jpg",
-        description: "✅ EXCLUSIVE CONTENT ✅ RARE PHOTOS ✅ PRIVATE VIDEOS ✅ HOT COLLECTION"
-    },
-    { 
-        title: "KAZUMI SQUIRT FOLDER", 
-        icon: "fas fa-droplet", 
-        url: "https://t.me/wickjordan",
-        preview: "img/12.jpg",
-        description: "✅ EXCLUSIVE KAZUMI ✅ HD VIDEOS ✅ HOT CONTENT ✅ PREMIUM LEAK"
-    },
-    { 
-        title: "GRACIE BON FOLDER", 
-        icon: "fas fa-bolt", 
-        url: "https://t.me/wickjordan",
-        preview: "img/13.jpg",
-        description: "✅ GRACIE BON FOLDER ✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS LEAK ✅ HOT TEENS"
-    },
-    { 
-        title: "SNAPGOD FOLDER", 
-        icon: "fas fa-eye", 
-        url: "https://t.me/wickjordan",
-        preview: "img/14.jpg",
-        description: "✅ SNAPGOD EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
-    },
-    { 
-        title: "MOM AND SON FOLDER", 
-        icon: "fas fa-home", 
-        url: "https://t.me/wickjordan",
-        preview: "img/15.jpg",
-        description: "✅ EXCLUSIVE CONTENT ✅ REAL VIDEOS ✅ PRIVATE COLLECTION ✅ HOT"
-    },
-    { 
-        title: "BANANA GIRLS FOLDER", 
-        icon: "fas fa-smile", 
-        url: "https://t.me/wickjordan",
-        preview: "img/16.jpg",
-        description: "✅ BANANA GIRLS ✅ HOT CONTENT ✅ EXCLUSIVE VIDEOS ✅ REAL LEAK"
-    },
-    { 
-        title: "AVA FOLDER", 
-        icon: "fas fa-star-of-life", 
-        url: "https://t.me/wickjordan",
-        preview: "img/17.jpg",
-        description: "✅ AVA EXCLUSIVE ✅ PREMIUM PHOTOS ✅ HD VIDEOS ✅ HOT CONTENT"
-    },
-    { 
-        title: "BABY ASHLEE FOLDER", 
-        icon: "fas fa-baby", 
-        url: "https://t.me/wickjordan",
-        preview: "img/18.jpg",
-        description: "✅ BABY ASHLEE ✅ EXCLUSIVE LEAK ✅ HOT VIDEOS ✅ REAL CONTENT"
-    },
-    { 
-        title: "DARKZADIE FOLDER", 
-        icon: "fas fa-moon", 
-        url: "https://t.me/wickjordan",
-        preview: "img/19.jpg",
-        description: "✅ DARKZADIE EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
-    },
-    { 
-        title: "IZZY FOLDER", 
-        icon: "fas fa-sparkles", 
-        url: "https://t.me/wickjordan",
-        preview: "img/20.jpg",
-        description: "✅ IZZY EXCLUSIVE ✅ FULL PHOTOS ✅ HD VIDEOS ✅ HOT CONTENT"
-    },
-    { 
-        title: "TEEN FOLDER", 
-        icon: "fas fa-youth", 
-        url: "https://t.me/wickjordan",
-        preview: "img/21.jpg",
-        description: "✅ TEEN COLLECTION ✅ EXCLUSIVE CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
-    },
-    { 
-        title: "OMEGLE-GAME FOLDER", 
-        icon: "fas fa-gamepad", 
-        url: "https://t.me/wickjordan",
-        preview: "img/22.jpg",
-        description: "✅ OMEGLE GAME ✅ INTERACTIVE CONTENT ✅ HOT VIDEOS ✅ EXCLUSIVE"
-    },
-    { 
-        title: "SAVANNAH FOLDER", 
-        icon: "fas fa-leaf", 
-        url: "https://t.me/wickjordan",
-        preview: "img/23.jpg",
-        description: "✅ SAVANNAH EXCLUSIVE ✅ PREMIUM LEAK ✅ HOT CONTENT ✅ REAL VIDEOS"
-    },
-    { 
-        title: "IVANKA FOLDER", 
-        icon: "fas fa-crown", 
-        url: "https://t.me/wickjordan",
-        preview: "img/24.jpg",
-        description: "✅ IVANKA EXCLUSIVE ✅ PREMIUM PHOTOS ✅ HD VIDEOS ✅ HOT LEAK"
-    },
-    { 
-        title: "ASH FOLDER", 
-        icon: "fas fa-fire-flame-curved", 
-        url: "https://t.me/wickjordan",
-        preview: "img/25.jpg",
-        description: "✅ ASH EXCLUSIVE ✅ HOT CONTENT ✅ REAL LEAK ✅ PREMIUM VIDEOS"
-    },
-    { 
-        title: "ABBI FOLDER", 
-        icon: "fas fa-heart-pulse", 
-        url: "https://t.me/wickjordan",
-        preview: "img/26.jpg",
-        description: "✅ ABBI EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL PHOTOS"
-    }
-];
+        const contentData = [
+            { 
+                title: "EMMI-SELLER FOLDER", 
+                icon: "fas fa-star", 
+                url: "https://t.me/wickjordan",
+                preview: "img/1.jpg",
+                description: "✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS LEAK ✅ HOT TEENS ✅ PREMIUM CONTENT"
+            },
+            { 
+                title: "LIZZY FOLDER", 
+                icon: "fas fa-heart", 
+                url: "https://t.me/wickjordan",
+                preview: "img/2.jpg",
+                description: "✅ EXCLUSIVE CONTENT ✅ HIGH QUALITY VIDEOS ✅ PRIVATE PHOTOS ✅ HOT COLLECTION"
+            },
+            { 
+                title: "GRACIE BM FOLDER", 
+                icon: "fas fa-crown", 
+                url: "https://t.me/wickjordan",
+                preview: "img/3.jpg",
+                description: "✅ PREMIUM LEAK ✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS ✅ HOT TEENS"
+            },
+            { 
+                title: "DESIREE GARCIA FOLDER", 
+                icon: "fas fa-gem", 
+                url: "https://t.me/wickjordan",
+                preview: "img/4.jpg",
+                description: "✅ EXCLUSIVE LEAK ✅ HD VIDEOS ✅ PRIVATE COLLECTION ✅ HOT CONTENT"
+            },
+            { 
+                title: "PYYTS FOLDER", 
+                icon: "fas fa-fire", 
+                url: "https://t.me/wickjordan",
+                preview: "img/5.jpg",
+                description: "✅ HOT COLLECTION ✅ FULL VIDEOS ✅ REAL LEAK ✅ PREMIUM CONTENT"
+            },
+            { 
+                title: "CSL FOLDER", 
+                icon: "fas fa-diamond", 
+                url: "https://t.me/wickjordan",
+                preview: "img/6.jpg",
+                description: "✅ EXCLUSIVE PHOTOS ✅ HD VIDEOS ✅ PRIVATE LEAK ✅ HOT TEENS"
+            },
+            { 
+                title: "OMEGLE APP FOLDER", 
+                icon: "fas fa-video", 
+                url: "https://t.me/wickjordan",
+                preview: "img/7.jpg",
+                description: "✅ OMEGLE RECORDINGS ✅ REAL INTERACTIONS ✅ HOT CONTENT ✅ EXCLUSIVE"
+            },
+            { 
+                title: "TIKTOK SNEAKY LEAKS", 
+                icon: "fab fa-tiktok", 
+                url: "https://t.me/wickjordan",
+                preview: "img/8.jpg",
+                description: "✅ TIKTOK EXCLUSIVE ✅ LEAKED CONTENT ✅ HOT VIDEOS ✅ REAL GIRLS"
+            },
+            { 
+                title: "SNAPCHAT FOLDER", 
+                icon: "fab fa-snapchat", 
+                url: "https://t.me/wickjordan",
+                preview: "img/9.jpg",
+                description: "✅ SNAPCHAT LEAKS ✅ PRIVATE STORIES ✅ HOT CONTENT ✅ EXCLUSIVE"
+            },
+            { 
+                title: "REAL-INCEST FOLDER", 
+                icon: "fas fa-users", 
+                url: "https://t.me/wickjordan",
+                preview: "img/10.jpg",
+                description: "✅ REAL CONTENT ✅ EXCLUSIVE VIDEOS ✅ PRIVATE COLLECTION ✅ HOT"
+            },
+            { 
+                title: "BILLIE EILISH FOLDER", 
+                icon: "fas fa-music", 
+                url: "https://t.me/wickjordan",
+                preview: "img/11.jpg",
+                description: "✅ EXCLUSIVE CONTENT ✅ RARE PHOTOS ✅ PRIVATE VIDEOS ✅ HOT COLLECTION"
+            },
+            { 
+                title: "KAZUMI SQUIRT FOLDER", 
+                icon: "fas fa-droplet", 
+                url: "https://t.me/wickjordan",
+                preview: "img/12.jpg",
+                description: "✅ EXCLUSIVE KAZUMI ✅ HD VIDEOS ✅ HOT CONTENT ✅ PREMIUM LEAK"
+            },
+            { 
+                title: "GRACIE BON FOLDER", 
+                icon: "fas fa-bolt", 
+                url: "https://t.me/wickjordan",
+                preview: "img/13.jpg",
+                description: "✅ GRACIE BON FOLDER ✅ FULL PHOTOS AND VIDEOS ✅ REAL GIRLS LEAK ✅ HOT TEENS"
+            },
+            { 
+                title: "SNAPGOD FOLDER", 
+                icon: "fas fa-eye", 
+                url: "https://t.me/wickjordan",
+                preview: "img/14.jpg",
+                description: "✅ SNAPGOD EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
+            },
+            { 
+                title: "MOM AND SON FOLDER", 
+                icon: "fas fa-home", 
+                url: "https://t.me/wickjordan",
+                preview: "img/15.jpg",
+                description: "✅ EXCLUSIVE CONTENT ✅ REAL VIDEOS ✅ PRIVATE COLLECTION ✅ HOT"
+            },
+            { 
+                title: "BANANA GIRLS FOLDER", 
+                icon: "fas fa-smile", 
+                url: "https://t.me/wickjordan",
+                preview: "img/16.jpg",
+                description: "✅ BANANA GIRLS ✅ HOT CONTENT ✅ EXCLUSIVE VIDEOS ✅ REAL LEAK"
+            },
+            { 
+                title: "AVA FOLDER", 
+                icon: "fas fa-star-of-life", 
+                url: "https://t.me/wickjordan",
+                preview: "img/17.jpg",
+                description: "✅ AVA EXCLUSIVE ✅ PREMIUM PHOTOS ✅ HD VIDEOS ✅ HOT CONTENT"
+            },
+            { 
+                title: "BABY ASHLEE FOLDER", 
+                icon: "fas fa-baby", 
+                url: "https://t.me/wickjordan",
+                preview: "img/18.jpg",
+                description: "✅ BABY ASHLEE ✅ EXCLUSIVE LEAK ✅ HOT VIDEOS ✅ REAL CONTENT"
+            },
+            { 
+                title: "DARKZADIE FOLDER", 
+                icon: "fas fa-moon", 
+                url: "https://t.me/wickjordan",
+                preview: "img/19.jpg",
+                description: "✅ DARKZADIE EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
+            },
+            { 
+                title: "IZZY FOLDER", 
+                icon: "fas fa-sparkles", 
+                url: "https://t.me/wickjordan",
+                preview: "img/20.jpg",
+                description: "✅ IZZY EXCLUSIVE ✅ FULL PHOTOS ✅ HD VIDEOS ✅ HOT CONTENT"
+            },
+            { 
+                title: "TEEN FOLDER", 
+                icon: "fas fa-youth", 
+                url: "https://t.me/wickjordan",
+                preview: "img/21.jpg",
+                description: "✅ TEEN COLLECTION ✅ EXCLUSIVE CONTENT ✅ HOT VIDEOS ✅ REAL LEAK"
+            },
+            { 
+                title: "OMEGLE-GAME FOLDER", 
+                icon: "fas fa-gamepad", 
+                url: "https://t.me/wickjordan",
+                preview: "img/22.jpg",
+                description: "✅ OMEGLE GAME ✅ INTERACTIVE CONTENT ✅ HOT VIDEOS ✅ EXCLUSIVE"
+            },
+            { 
+                title: "SAVANNAH FOLDER", 
+                icon: "fas fa-leaf", 
+                url: "https://t.me/wickjordan",
+                preview: "img/23.jpg",
+                description: "✅ SAVANNAH EXCLUSIVE ✅ PREMIUM LEAK ✅ HOT CONTENT ✅ REAL VIDEOS"
+            },
+            { 
+                title: "IVANKA FOLDER", 
+                icon: "fas fa-crown", 
+                url: "https://t.me/wickjordan",
+                preview: "img/24.jpg",
+                description: "✅ IVANKA EXCLUSIVE ✅ PREMIUM PHOTOS ✅ HD VIDEOS ✅ HOT LEAK"
+            },
+            { 
+                title: "ASH FOLDER", 
+                icon: "fas fa-fire-flame-curved", 
+                url: "https://t.me/wickjordan",
+                preview: "img/25.jpg",
+                description: "✅ ASH EXCLUSIVE ✅ HOT CONTENT ✅ REAL LEAK ✅ PREMIUM VIDEOS"
+            },
+            { 
+                title: "ABBI FOLDER", 
+                icon: "fas fa-heart-pulse", 
+                url: "https://t.me/wickjordan",
+                preview: "img/26.jpg",
+                description: "✅ ABBI EXCLUSIVE ✅ PREMIUM CONTENT ✅ HOT VIDEOS ✅ REAL PHOTOS"
+            }
+        ];
 
         // Counter management
         let onlineUsers = 1278;
@@ -943,8 +1075,8 @@ const contentData = [
         }
 
         // Notification system
-        const firstNames = ["Alex", "Bruno", "Carlos", "Daniel", "Eduardo", "Felipe", "Gabriel", "Hugo", "Igor", "João", "Lucas", "Miguel", "Nuno", "Pedro", "Rafael", "Sofia", "Tiago", "Vasco", "William", "Xavier"];
-        const lastNames = ["Silva", "Santos", "Oliveira", "Souza", "Rodrigues", "Ferreira", "Alves", "Pereira", "Lima", "Gomes", "Costa", "Ribeiro", "Martins", "Carvalho", "Araújo", "Melo", "Barbosa", "Rocha", "Dias", "Nunes"];
+        const firstNames = ["John", "Michael", "David", "James", "Robert", "William", "Richard", "Joseph", "Thomas", "Daniel"];
+        const lastNames = ["Smith", "Johnson", "Williams", "Brown", "Jones", "Miller", "Davis", "Garcia", "Rodriguez", "Wilson"];
 
         let lastGeneratedNames = new Set();
 
@@ -978,7 +1110,7 @@ const contentData = [
         function generatePurchaseNotification() {
             const name = generateUniqueName();
             const item = contentData[Math.floor(Math.random() * contentData.length)];
-            showNotification(`${name} acabou de adquirir ${item.title}`);
+            showNotification(`${name} just purchased ${item.title}`);
         }
 
         // Content toggle
@@ -1039,7 +1171,7 @@ const contentData = [
                         </div>
                         <a href="${item.url}" target="_blank" class="get-now-btn">
                             <i class="fas fa-download"></i>
-                            OBTER AGORA
+                            GET NOW
                         </a>
                     </div>
                 `;
@@ -1129,19 +1261,17 @@ const contentData = [
             }
         });
         
-        
-        
         function showTerms() {
-    showNotification("Termos de Serviço: O conteúdo é apenas para maiores de 18 anos.");
-}
+            showNotification("Terms of Service: Content is for adults 18+ only.");
+        }
 
-function showPrivacy() {
-    showNotification("Política de Privacidade: Não armazenamos dados pessoais dos usuários.");
-}
+        function showPrivacy() {
+            showNotification("Privacy Policy: We do not store personal user data.");
+        }
 
-function showContact() {
-    showNotification("Contato: Entre em contato via Telegram @wickjordan");
-}
+        function showContact() {
+            showNotification("Contact: Reach us via Telegram @wickjordan");
+        }
     </script>
 </body>
 </html>
